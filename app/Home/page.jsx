@@ -1,10 +1,12 @@
 import React from 'react';
 import Banner from './Banner/Banner';
+import Contact from './Contact/Contact';
 
 const Home = () => {
     return (
-        <div className='h-[3000px]'>
+        <div className=''>
             <Banner />
+            <Contact />
         </div>
     );
 };
