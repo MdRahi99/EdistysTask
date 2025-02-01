@@ -3,6 +3,7 @@ import Banner from './Banner/Banner';
 import Contact from './Contact/Contact';
 import SubBanner from './Banner/SubBanner';
 import Choose from './Choose/Choose';
+import Companies from './Companies/Companies';
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Banner />
             <SubBanner />
             <Choose />
+            <Companies />
             <Contact />
         </div>
     );
