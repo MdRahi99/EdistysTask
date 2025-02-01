@@ -111,7 +111,10 @@ const Choose = () => {
     };
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-4 md:px-8 md:py-16">
+        <div className="bg-gradient-to-b h-[1300px] md:h-[1000px] from-white to-[#F1F7FE] py-20 px-4 md:px-16 lg:px-36 overflow-hidden"
+            style={{
+                clipPath: 'polygon(0% 0%, 100% 0, 100% 80%, 0% 100%)'
+            }}>
             <div className="text-center mb-12">
                 <h3 className="text-[#1F80F0] font-semibold text-lg mb-4">TECHNOLOGY BUILT FOR YOU</h3>
                 <h2 className="text-4xl md:text-6xl font-semibold text-navy-900 mb-8">The future of finance</h2>
@@ -123,8 +126,8 @@ const Choose = () => {
                             key={item.id}
                             onClick={() => handleTabClick(item.id)}
                             className={`px-12 py-2.5 text-lg text-[#1F80F0] font-bold rounded-full transition-all duration-300 ${activeTab === item.id
-                                    ? 'bg-[#B9D9FF]'
-                                    : 'bg-transparent hover:bg-slate-100'
+                                ? 'bg-[#B9D9FF]'
+                                : 'bg-transparent hover:bg-slate-100'
                                 }`}
                         >
                             {item.title}
