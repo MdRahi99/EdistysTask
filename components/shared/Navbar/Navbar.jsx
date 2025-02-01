@@ -103,7 +103,7 @@ const Navbar = () => {
     return (
         <nav className={`fixed w-full transition-all duration-300 z-50
             ${show ? 'top-0' : '-top-24'} 
-            ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+            ${isScrolled ? 'bg-white shadow-md' : 'bg-[#1B76E9] md:bg-transparent'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-[5.8rem]">
                     {/* Logo */}
@@ -113,6 +113,7 @@ const Navbar = () => {
                                 src={isScrolled ? logo2 : logo}
                                 alt='logo'
                                 priority
+                                className='h-7 md:h-auto'
                             />
                         </Link>
                     </div>
