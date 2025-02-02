@@ -65,7 +65,7 @@ const Banner = () => {
                         </p>
                         <div className="w-full">
                             <button
-                                className="bg-[#FE8B53] w-full md:w-1/3 hover:bg-[#ff8d74] text-white px-8 py-3 rounded text-lg transition-all duration-200 flex items-center justify-center gap-2 font-semibold mt-10"
+                                className="bg-[#FE8B53] w-full md:w-1/3 truncate hover:bg-[#ff8d74] text-white px-8 py-3 rounded text-lg transition-all duration-200 flex items-center justify-center gap-2 font-semibold mt-10"
                                 onMouseEnter={() => setIsHovered(true)}
                                 onMouseLeave={() => setIsHovered(false)}
                             >
