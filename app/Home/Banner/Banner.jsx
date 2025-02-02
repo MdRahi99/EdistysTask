@@ -5,7 +5,7 @@ import WaveLinesDesktop1 from "@/Assets/backgrounds/WaveLinesDesktop1.svg";
 import WaveLinesDesktop2 from "@/Assets/backgrounds/WaveLinesDesktop2.svg";
 import WaveLinesDesktop3 from "@/Assets/backgrounds/WaveLinesDesktop3.svg";
 import WaveLinesDesktop4 from "@/Assets/backgrounds/WaveLinesDesktop4.svg";
-import banner_people from "@/Assets/backgrounds/banner_people.jpg";
+import banner_people from "@/Assets/backgrounds/banner_people.png";
 import chevronRightWhite from "@/Assets/icons/ChevronRightWhite.svg";
 
 const Banner = () => {
