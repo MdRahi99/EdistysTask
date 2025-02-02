@@ -121,7 +121,7 @@ const Process = () => {
 
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 px-4 md:px-12 py-8 bg-gradient-to-l from-[#E9F6FF] to-[#FAFAFA] col-span-1 md:col-span-2 rounded-2xl">
                     {/* Blockchain Box */}
-                    <div className='w-full md:w-[220px] flex flex-col items-center justify-center gap-4 rounded-2xl z-50'>
+                    <div className='w-full md:w-[220px] flex flex-col items-center justify-center gap-4 rounded-2xl z-40'>
                         <div className='w-full rounded-xl drop-shadow-xl shadow-[#E3F3FF] p-4 md:p-6 mt-4 md:mt-12 bg-white text-center'>
                             <p className={`${diagramData.mechanism.color} text-sm font-medium mb-2`}>
                                 {diagramData.mechanism.label}
