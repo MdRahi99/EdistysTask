@@ -1,5 +1,7 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import Line1 from "@/Assets/icons/easy-banking/Line1.svg";
 import Line2 from "@/Assets/icons/easy-banking/Line2.svg";
 import Line3 from "@/Assets/icons/easy-banking/Line3.svg";
@@ -58,6 +60,40 @@ const featuresData = [
 ];
 
 const Process = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [direction, setDirection] = useState(0);
+
+    const slideVariants = {
+        enter: (direction) => ({
+            x: direction > 0 ? 1000 : -1000,
+            opacity: 0
+        }),
+        center: {
+            zIndex: 1,
+            x: 0,
+            opacity: 1
+        },
+        exit: (direction) => ({
+            zIndex: 0,
+            x: direction < 0 ? 1000 : -1000,
+            opacity: 0
+        })
+    };
+
+    const swipeConfidenceThreshold = 10000;
+    const swipePower = (offset, velocity) => {
+        return Math.abs(offset) * velocity;
+    };
+
+    const paginate = (newDirection) => {
+        setDirection(newDirection);
+        setCurrentIndex((prevIndex) => (
+            prevIndex + newDirection >= 0 && prevIndex + newDirection < featuresData.length
+                ? prevIndex + newDirection
+                : prevIndex
+        ));
+    };
+
     return (
         <div className="px-4 py-8 md:py-16 md:px-40">
             {/* Philosophy Header */}
@@ -143,7 +179,7 @@ const Process = () => {
             </div>
 
             {/* Three Features Section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="hidden md:grid grid-cols-3 gap-8">
                 {featuresData.map((feature, index) => (
                     <div key={index} className='bg-[#F8FCFF] p-8 rounded-3xl'>
                         <div className="mb-6">
@@ -159,6 +195,51 @@ const Process = () => {
                         </p>
                     </div>
                 ))}
+            </div>
+
+            {/* Mobile Swipeable Features */}
+            <div className="relative h-[280px] md:hidden overflow-hidden">
+                <AnimatePresence initial={false} custom={direction}>
+                    <motion.div
+                        key={currentIndex}
+                        custom={direction}
+                        variants={slideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{
+                            x: { type: "spring", stiffness: 300, damping: 30 },
+                            opacity: { duration: 0.2 }
+                        }}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={1}
+                        onDragEnd={(e, { offset, velocity }) => {
+                            const swipe = swipePower(offset.x, velocity.x);
+
+                            if (swipe < -swipeConfidenceThreshold) {
+                                paginate(1);
+                            } else if (swipe > swipeConfidenceThreshold) {
+                                paginate(-1);
+                            }
+                        }}
+                        className="absolute w-full"
+                    >
+                        <div className='bg-[#F8FCFF] p-8 rounded-3xl'>
+                            <div className="mb-6">
+                                <div className={`w-12 h-12 ${featuresData[currentIndex].bgColor} rounded-full flex items-center justify-center`}>
+                                    <Image src={featuresData[currentIndex].icon} alt={`card ${currentIndex + 1}`} />
+                                </div>
+                            </div>
+                            <h3 className="text-[#1a2b6b] text-xl md:text-2xl font-semibold mb-4">
+                                {featuresData[currentIndex].title}
+                            </h3>
+                            <p className="text-gray-800 pr-10 leading-relaxed">
+                                {featuresData[currentIndex].description}
+                            </p>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
             </div>
         </div>
     );
